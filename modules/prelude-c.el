@@ -45,6 +45,21 @@
 
 (add-hook 'makefile-mode-hook 'prelude-makefile-mode-hook)
 
+;; C++ modifications
+(global-set-key [(f9)] 'compile)
+(setq compilation-window-height 14)
+
+(setq compilation-finish-function
+      (lambda (buf str)
+        (if (string-match "exited abnormally" str)
+            ;; errors happened
+            (message "compilation errors, press C-x ` to visit")
+
+          ;; no errors
+          (run-at-time 1.0 nil 'delete-windows-on buf)
+          (message "NO COMPILATIONS ERRORS!"))))
+
+
 (provide 'prelude-c)
 
 ;;; prelude-c.el ends here
