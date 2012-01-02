@@ -33,7 +33,8 @@
 ;;; Code:
 
 (defun prelude-c-mode-common-hook ()
-  (setq c-basic-offset 4))
+  (setq c-basic-offset 4)
+  (prelude-turn-off-whitespace))
 
 ;; this will affect all modes derived from cc-mode, like
 ;; java-mode, php-mode, etc

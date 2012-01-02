@@ -50,7 +50,7 @@
 
 (setq prelude-packages
       (append
-       '()
+       '(auto-complete)
        (mapcar 'el-get-source-name el-get-sources)))
 
 (el-get 'sync prelude-packages)

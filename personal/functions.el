@@ -4,6 +4,8 @@
 (require 'google-weather)
 (require 'org-google-weather)
 
+(require 'gccsense)
+
 ;; shell mode
 (defun sh ()
   "Launch an ANSI term with /bin/bash"
@@ -18,6 +20,9 @@
   (message "ALL OTHER BUFFERS KILLED"))
 
 (global-set-key [(f5)] 'kill-other-buffers)
+
+;; bind autocomplete to shift+space
+(global-set-key [(shift ?\ )] 'ac-complete-gccsense)
 
 ;; kill all dired buffers
 (defun kill-all-dired-buffers()
