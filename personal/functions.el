@@ -6,6 +6,10 @@
 
 (require 'gccsense)
 
+;; restore scratch buffer if destroyed
+(run-with-idle-timer 5 t
+                     '(lambda () (get-buffer-create "*scratch*")))
+
 ;; shell mode
 (defun sh ()
   "Launch an ANSI term with /bin/bash"
@@ -14,9 +18,10 @@
 
 ;; kill all buffers
 (defun kill-other-buffers ()
-  "Kill all other buffers"
+  "Kill all buffers except *scratch* and current buffer"
   (interactive)
-  (mapc 'kill-buffer (delq (current-buffer) (buffer-list)))
+  (mapc 'kill-buffer (delq (current-buffer)
+                           (delq (get-buffer "*scratch*") (buffer-list))))
   (message "ALL OTHER BUFFERS KILLED"))
 
 (global-set-key [(f5)] 'kill-other-buffers)
