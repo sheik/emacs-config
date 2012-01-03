@@ -47,7 +47,6 @@
 (add-hook 'makefile-mode-hook 'prelude-makefile-mode-hook)
 
 ;; C++ modifications
-(global-set-key [(f9)] 'compile)
 (setq compilation-window-height 14)
 
 (setq compilation-finish-function
