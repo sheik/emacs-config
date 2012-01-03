@@ -10,6 +10,13 @@
 (run-with-idle-timer 5 t
                      '(lambda () (get-buffer-create "*scratch*")))
 
+;; find main org file quickly
+(defun gtd ()
+  (interactive)
+  (find-file "~/Private/mygtd.org"))
+
+(global-set-key [(f6)] 'gtd)
+
 ;; shell mode
 (defun sh ()
   "Launch an ANSI term with /bin/bash"
