@@ -36,6 +36,17 @@
       (message "Killed %i dired buffer(s)." count ))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; org-mode stuff
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq remember-annotation-functions '(org-remember-annotation))
+(setq remember-handler-functions '(org-remember-handler))
+(add-hook 'remember-mode-hook 'org-remember-apply-template)
+(setq org-remember-templates
+      '(("Todo" ?t "* TODO %? %^g\n %i\n " "~/Private/mygtd.org" "Tasks")
+        ))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; key bindings
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -44,3 +55,4 @@
 (global-set-key [(f5)] 'kill-other-buffers)
 (global-set-key [(f6)] 'gtd)
 (global-set-key [(f9)] 'compile)
+(global-set-key [(f4)] 'org-remember)
